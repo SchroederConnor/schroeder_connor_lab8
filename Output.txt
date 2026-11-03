@@ -1,0 +1,34 @@
+Welcome to Hello World
+===================
+Max Slot: 10
+Menu
+===================
+1. Burger: $8.5
+2. Pizza: $18.55
+3. Sandwich: $10.5
+4. Soft Drink: $2.5
+5. Combo (Burger & Drinks): $11
+6. Salad: $10.75
+Choose your order
+Press 0 to stop
+1: Extra Ketchup
+2: No Onions
+3: Extra Utensils
+4: Nothing
+Select specific notes
+Press 0 to stop
+Name: Annie(ID:An4) - 4 People.
+===================
+Order
+===================
+1. Burger: $8.5
+2. Sandwich: $10.5
+3. Wings: $10.5
+
+===================
+Note
+===================
+1. No Onions
+2. No Ranch
+
+Total Bill: $29.5

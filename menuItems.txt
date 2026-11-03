@@ -1,0 +1,6 @@
+Burger: $8.5
+Pizza: $18.55
+Sandwich: $10.5
+Soft Drink: $2.5
+Combo (Burger & Drinks): $11
+Salad: $10.75
