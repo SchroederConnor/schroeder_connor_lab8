@@ -57,13 +57,11 @@ int main()
         if(select > restaurant.getNumItem())
         {
             cout << "ERROR: selection out of menu bounds" << endl;
-            cout << restaurant;
             cin >> select;
         }
         else
         {
             order.addOrder(restaurant.getItems()[select - 1]);
-            cout << restaurant;
             cin >> select;
         }
     }
@@ -116,19 +114,11 @@ int main()
         if(select > total)
         {
             cout << "ERROR: selection out of menu bounds" << endl;
-            for(int i = 0; i < total; i++)
-            {
-                cout << i + 1 << ": " << notes[i] << endl;
-            }
             cin >> select;
         }
         else
         {
             note.addOrder(notes[select - 1]);
-            for(int i = 0; i < total; i++)
-            {
-                cout << i + 1 << ": " << notes[i] << endl;
-            }
             cin >> select;
         }
     }
