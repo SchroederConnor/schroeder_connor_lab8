@@ -1,5 +1,5 @@
 #include "restaurant.h"
-#include "orderbox.h"
+#include "orderBox.h"
 #include "customer.h"
 #include <fstream>
 
@@ -18,13 +18,28 @@ int main()
 
     ifstream fin("menuItems.txt");
     //write your implementation here
-    fin.close();
+    if(fin.is_open())
+    {
+        string name, price;
+        while(fin)
+        {
+            getline(fin, name, ':');
+            getline(fin, price, '$');    //destroy
+            getline(fin, price);
+            MenuItem mi(name, stod(price));
+            restaurant.addItem(mi);
+
+            if(fin.eof()) break;
+        }
+        fin.close();
+    }
 
     // Display the restaurant using the overloaded insertion (<<) operator.
-    
+    cout << restaurant;
 
     OrderBox<MenuItem> order;
     //use the setter method for order to set type as "Order"
+    order.setType("Order");
     int select;
 
     // Prompt the user to select menu items.
@@ -35,11 +50,32 @@ int main()
 
     cout << "Choose your order" << endl;
     cout << "Press 0 to stop" << endl;
-
     //write your implementation here
+    cin >> select;
+    while(select != 0)
+    {
+        if(select > restaurant.getNumItem())
+        {
+            cout << "ERROR: selection out of menu bounds" << endl;
+            cout << restaurant;
+            cout << "Choose your order" << endl;
+            cout << "Press 0 to stop" << endl;
+            cin >> select;
+        }
+        else
+        {
+            order.addOrder(restaurant.getItems()[select - 1]);
+            cout << "Selection added to order!" << endl;
+            cout << restaurant;
+            cout << "Choose your order" << endl;
+            cout << "Press 0 to stop" << endl;
+            cin >> select;
+        }
+    }
 
     OrderBox<string> note;
     //use the setter method for note to set type as "Note"
+    note.setType("Note");
     string notes[5];
 
     // Create another input file stream fin2 and open "notes.txt".
@@ -49,14 +85,27 @@ int main()
 
     ifstream fin2("notes.txt");
     //write your implementation here
-    fin2.close();
+    int total = 0;
+    if(fin2.is_open())
+    {
+        string n;
+        while(fin2)
+        {
+            getline(fin2, n);
+            notes[total] = n;
+            total++;
+            if(fin2.eof()) break;
+        }
+        fin2.close();
+    }
 
     // Display all available kitchen notes saved in notes array.
     // Number each note beginning with 1.
-
+    for(int i = 0; i < total; i++)
+    {
+        cout << i + 1 << ". " << notes[i] << endl;
+    }
     
-
-
     // Prompt the user to select one or more kitchen notes.
     // Continue accepting selections until the user enters 0.
     // For each valid selection, add the chosen note to the
@@ -66,6 +115,27 @@ int main()
     cout << "Press 0 to stop" << endl;
 
     //write your implementation here
+    cin >> select;
+    while(select != 0)
+    {
+        if(select > total)
+        {
+            cout << "ERROR: selection out of menu bounds" << endl;
+            cout << restaurant;
+            cout << "Choose your note" << endl;
+            cout << "Press 0 to stop" << endl;
+            cin >> select;
+        }
+        else
+        {
+            note.addOrder(notes[select - 1]);
+            cout << "Selection added to order!" << endl;
+            cout << restaurant;
+            cout << "Choose your note" << endl;
+            cout << "Press 0 to stop" << endl;
+            cin >> select;
+        }
+    }
 
     // Create a Customer object using the following information:
     //   Name: Annie
@@ -73,21 +143,19 @@ int main()
     //   Party Size: 4
     //   Menu Items: order
     //   Notes: note
-
+    Customer cust("Annie", "An4", 4, order, note);
     
-
-    
-
     // Add a new kitchen note ("No Ranch") to Annie's order
     // by calling the addNote() method in Customer class.
-
+    cust.addNote("No Ranch");
     
     MenuItem m("Wings",10.5);
     // Add this new menu item m to Annie's order
     // by calling the addMenuItem() method in Customer class.
+    cust.addMenuItem(m);
 
     // Display the customer's information using the overloaded insertion (<<) operator.
-    
+    cout << cust;
 
     // Your output must match Output.txt exactly.
     // Pay close attention to spelling, capitalization, spaces, punctuation, end lines
