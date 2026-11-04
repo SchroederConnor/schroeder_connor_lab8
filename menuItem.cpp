@@ -33,5 +33,5 @@ double MenuItem::getPrice(){
 
 ostream& operator<<(ostream& out,  const MenuItem& rhs) {
     //implement this method
-    // You may reuse the implementations from Lab 4 if needed.
+    // You may reuse the implementations from Overload Lab if needed.
 }
