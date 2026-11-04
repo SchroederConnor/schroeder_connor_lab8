@@ -58,17 +58,12 @@ int main()
         {
             cout << "ERROR: selection out of menu bounds" << endl;
             cout << restaurant;
-            cout << "Choose your order" << endl;
-            cout << "Press 0 to stop" << endl;
             cin >> select;
         }
         else
         {
             order.addOrder(restaurant.getItems()[select - 1]);
-            cout << "Selection added to order!" << endl;
             cout << restaurant;
-            cout << "Choose your order" << endl;
-            cout << "Press 0 to stop" << endl;
             cin >> select;
         }
     }
@@ -103,7 +98,7 @@ int main()
     // Number each note beginning with 1.
     for(int i = 0; i < total; i++)
     {
-        cout << i + 1 << ". " << notes[i] << endl;
+        cout << i + 1 << ": " << notes[i] << endl;
     }
     
     // Prompt the user to select one or more kitchen notes.
@@ -121,18 +116,19 @@ int main()
         if(select > total)
         {
             cout << "ERROR: selection out of menu bounds" << endl;
-            cout << restaurant;
-            cout << "Choose your note" << endl;
-            cout << "Press 0 to stop" << endl;
+            for(int i = 0; i < total; i++)
+            {
+                cout << i + 1 << ": " << notes[i] << endl;
+            }
             cin >> select;
         }
         else
         {
             note.addOrder(notes[select - 1]);
-            cout << "Selection added to order!" << endl;
-            cout << restaurant;
-            cout << "Choose your note" << endl;
-            cout << "Press 0 to stop" << endl;
+            for(int i = 0; i < total; i++)
+            {
+                cout << i + 1 << ": " << notes[i] << endl;
+            }
             cin >> select;
         }
     }

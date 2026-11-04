@@ -6,7 +6,7 @@ using namespace std;
 template <typename T>
 class OrderBox
 {
-    String type;
+    string type;
     int num;
     T orders[20];
     public:
@@ -25,10 +25,12 @@ class OrderBox
         OrderBox<T>& operator=(const OrderBox<T>&); 
         friend ostream& operator<<(ostream& out, const OrderBox<T>& other)
         {
-            for(int i = 0; i < 20; i++)
+            cout << "===================\n" << other.type << "\n===================\n";
+            for(int i = 0; i < other.num; i++)
             {
                 cout << i + 1 << ". " << other.orders[i] << endl;
             }
+            return out;
         }
 };
 #include "orderBox.cpp"

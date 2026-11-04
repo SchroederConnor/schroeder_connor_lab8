@@ -87,7 +87,7 @@ ostream& operator<<(ostream& os, const Restaurant& rh)
     cout << "Menu" << endl << "===================" << endl;
     for(int i = 0; i < rh.numItem; i++)
     {
-        cout << i + 1 << ". " << rh.items[i];
+        cout << i + 1 << ". " << rh.items[i] << endl;;
     }
     return os;
 }

@@ -47,6 +47,7 @@ void Customer::addMenuItem(MenuItem mi) {menuItems.addOrder(mi); calculateBill()
 
 void Customer::calculateBill()
 {
+    bill = 0;
     int lim = menuItems.getNum();
     for(int i = 0; i < lim; i++)
     {
@@ -58,8 +59,9 @@ void Customer::calculateBill()
 ostream& operator<<(ostream& os, const Customer& rh)
 {
     cout << "Name: " << rh.name << "(ID:" << rh.ID << ") - " << rh.partySize << " People." << endl;
-    cout << rh.menuItems << endl;;
-    cout << rh.notes << endl;;
+    cout << rh.menuItems << endl;
+    cout << rh.notes << endl;
+    cout << "Total Bill: $" << rh.bill << endl;
     return os;
 }
 Customer& Customer::operator=(const Customer& rh)

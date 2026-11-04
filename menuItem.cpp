@@ -32,6 +32,6 @@ double MenuItem::getPrice(){
 
 
 ostream& operator<<(ostream& out,  const MenuItem& rhs) {
-    cout << rhs.name << ": $" << rhs.price << endl;
+    cout << rhs.name << ": $" << rhs.price;
     return out;
 }

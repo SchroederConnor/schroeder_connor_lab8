@@ -10,7 +10,7 @@ OrderBox<T>::OrderBox()
 template <typename T>
 OrderBox<T>::OrderBox(string n, int x, T* t)
 {
-    type = t;
+    type = n;
     num = x;
     for(int i = 0; i < 20; i++)
     {
@@ -41,7 +41,7 @@ void OrderBox<T>::setType(string t) {type = t;}
 template <typename T>
 void OrderBox<T>::addOrder(T t)
 {
-    if(int num < 20)
+    if(num < 20)
     {
         orders[num] = t;
         num++;
